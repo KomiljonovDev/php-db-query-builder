@@ -1,7 +1,8 @@
 <?php
 require 'vendor/autoload.php';
 
-use Core\Models\Model;
+use Core\Models\User;
+use Core\database\Query;
 
+Query::create();
 
-Model::connect();

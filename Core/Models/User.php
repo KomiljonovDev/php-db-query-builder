@@ -1,0 +1,9 @@
+<?php
+
+namespace Core\Models;
+
+use Core\database\Model;
+
+class User extends Model {
+    protected static $tablename = 'products';
+}
