@@ -5,4 +5,5 @@ use Core\Models\User;
 use Core\database\Query;
 
 Query::create();
+User::create();
 
