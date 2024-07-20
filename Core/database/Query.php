@@ -50,7 +50,6 @@ class Query {
             return $pdo;
         }catch (\Exception $exception){
             echo self::getQuery() . "<br>";
-            var_dump(self::$static_table);
             echo $exception;
         }
     }
@@ -60,7 +59,6 @@ class Query {
         $placeholders = implode(', ', array_fill(0, count($values), '?'));
         $values = array_values($values);
         self::$static_query = "INSERT INTO " . self::dbname() . "." . self::getTable() . " ($columns) VALUES ($placeholders)";
-        echo self::getQuery();
         self::execute($values);
     }
     /**
