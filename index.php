@@ -4,6 +4,6 @@ require 'vendor/autoload.php';
 use Core\Models\User;
 use Core\database\Query;
 
-Query::create();
-User::create();
+//var_dump(Query::create());
+User::create(['name'=>'Obidjon', 'email'=>'obidjon@gmail.com']);
 
