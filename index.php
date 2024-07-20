@@ -16,6 +16,7 @@ Query::setTable('users');
 // Where example
 
 $data = User::where('name', 'Komiljonov')->orWhere('id', '=', 37)->get();
+//$data = Query::where('name', 'Komiljonov')->orWhere('id', '=', 37)->get();
 
 //print_r($data);
 
