@@ -13,3 +13,4 @@ Query::setTable('users');
 //User::create(['name'=>'Obidjon', 'email'=>'komiljonovdev@gmail.com']);
 //Query::create(['name'=>'Obidjon', 'email'=>'komiljonovdev@gmail.com']);
 
+
