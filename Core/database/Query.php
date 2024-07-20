@@ -49,7 +49,7 @@ class Query {
             $pdo->execute($params);
             return $pdo;
         }catch (\Exception $exception){
-            echo "<p style='color: #e85151'>" . self::getQuery() . "</p><br>";
+            echo "<p style='color: #e85151'>" . self::getQuery() . "</p>";
             echo $exception;
         }
     }
