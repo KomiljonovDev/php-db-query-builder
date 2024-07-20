@@ -5,12 +5,13 @@ namespace Core\database;
 use http\Exception;
 
 require 'Helper.php';
-abstract class Query {
-    private static $static_query;
+class Query {
     protected $pdo;
-    protected static $static_pdo;
     protected $table;
+    protected static $static_pdo;
     protected static $static_table;
+    protected static $static_query;
+    protected static $static_conditions;
 
     public function __construct ($table_name = null) {
         $this->pdo = new \PDO(env('DATABASE') . ":host" . env('HOST') . ";dbname=" . env('DB_NAME'), env('DB_USER'), env('DB_PASSWORD'));
@@ -46,6 +47,7 @@ abstract class Query {
         try {
             $pdo = self::$static_pdo->prepare(self::$static_query);
             $pdo->execute($params);
+            return $pdo;
         }catch (\Exception $exception){
             echo self::getQuery() . "<br>";
             var_dump(self::$static_table);
@@ -58,11 +60,46 @@ abstract class Query {
         $placeholders = implode(', ', array_fill(0, count($values), '?'));
         $values = array_values($values);
         self::$static_query = "INSERT INTO " . self::dbname() . "." . self::getTable() . " ($columns) VALUES ($placeholders)";
+        echo self::getQuery();
         self::execute($values);
     }
-
-    public static function where () {
+    /**
+     * @param $condition_or_value mixed condition || value
+    */
+    public static function where (string $column, mixed $condition_or_value, mixed $value = null) {
         self::connect();
-
+        $condition_data = '=';
+        if (func_num_args() == 3){
+            $condition_data = $condition_or_value;
+            $condition_or_value = $value;
+        }
+        self::$static_conditions[$column] = ['condition'=>$condition_data,'value'=>$condition_or_value, 'logical_operator'=>'AND'];
+        return new static;
+    }
+    /**
+     * @param $condition_or_value mixed condition || value
+     */
+    public static function orWhere (string $column, mixed $condition_or_value, mixed $value = null) {
+        self::connect();
+        $condition_data = '=';
+        if (func_num_args() == 3){
+            $condition_data = $condition_or_value;
+            $condition_or_value = $value;
+        }
+        self::$static_conditions[$column] = ['condition'=>$condition_data,'value'=>$condition_or_value, 'logical_operator'=>'OR'];
+        return new static;
+    }
+    public static function get () {
+        $conditions = "";
+        $conditions_array = [];
+        foreach (self::$static_conditions as $column => $static_condition) {
+            if (strlen($conditions)){
+                $conditions .= $static_condition['logical_operator'] . " ";
+            }
+            $conditions .= $column . $static_condition['condition']  . "? ";
+            $conditions_array[] = $static_condition['value'];
+        }
+        self::$static_query = "SELECT * FROM " . self::dbname() . "." . self::getTable() . " WHERE " . $conditions;
+        return self::execute($conditions_array)->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

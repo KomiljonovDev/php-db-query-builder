@@ -13,4 +13,8 @@ Query::setTable('users');
 //User::create(['name'=>'Obidjon', 'email'=>'komiljonovdev@gmail.com']);
 //Query::create(['name'=>'Obidjon', 'email'=>'komiljonovdev@gmail.com']);
 
+// Where examomple
 
+//$data = Query::where('name', 'Komiljonov')->orWhere('id', '=', 37)->get();
+//
+//print_r($data);
