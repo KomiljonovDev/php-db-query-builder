@@ -61,6 +61,26 @@ class Query {
         self::$static_query = "INSERT INTO " . self::dbname() . "." . self::getTable() . " ($columns) VALUES ($placeholders)";
         self::execute($values);
     }
+    public static function update (array $values) {
+        self::connect();
+        $columns = implode('=?,', array_keys($values)) . '=?';
+        $merged = array_values($values);
+        self::$static_query = "UPDATE " . self::dbname() . "." . self::getTable() . " SET $columns";
+        if (self::$static_conditions){
+            $conditions = "";
+            $conditions_array = [];
+            foreach (self::$static_conditions as $column => $static_condition) {
+                if (strlen($conditions)){
+                    $conditions .= $static_condition['logical_operator'] . " ";
+                }
+                $conditions .= $column . $static_condition['condition']  . "? ";
+                $conditions_array[] = $static_condition['value'];
+            }
+            self::$static_query .= " WHERE " . $conditions;
+            $merged = array_merge(array_values($values), $conditions_array);
+        }
+        self::execute($merged);
+    }
     /**
      * @param $condition_or_value mixed condition || value
     */

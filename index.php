@@ -5,8 +5,7 @@ use Core\Models\User;
 use Core\database\Query;
 
 
-Query::setTable('users');
-
+//Query::setTable('users');
 
 // Create example
 
@@ -15,11 +14,19 @@ Query::setTable('users');
 
 // Where example
 
-$data = User::where('name', 'Komiljonov')->orWhere('id', '=', 37)->get();
+//$data = User::where('name', 'Komiljonov')->orWhere('id', '=', 37)->get();
 //$data = Query::where('name', 'Komiljonov')->orWhere('id', '=', 37)->get();
 
 //print_r($data);
 
-// Get sql query
+// Update example
 
+// Update all data
+User::update(['name'=>'Obidjon Komiljonov','email'=>'komiljonovdev@gmail.com']);
+
+// Update with where method
+User::where('id','46')->orWhere('id', '45')->update(['name'=>'Obidjon Komiljonov','email'=>'komiljonovdev@gmail.com']);
+
+
+// Get sql query
 echo User::getQuery();
