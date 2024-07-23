@@ -30,3 +30,4 @@ User::where('id','46')->orWhere('id', '45')->update(['name'=>'Obidjon Komiljonov
 
 // Get sql query
 echo User::getQuery();
+echo Query::getQuery();
