@@ -4,7 +4,6 @@ require 'vendor/autoload.php';
 use Core\Models\User;
 use Core\database\Query;
 
-
 //Query::setTable('users');
 
 // Create example
@@ -26,7 +25,6 @@ User::update(['name'=>'Obidjon Komiljonov','email'=>'komiljonovdev@gmail.com']);
 
 // Update with where method
 User::where('id','46')->orWhere('id', '45')->update(['name'=>'Obidjon Komiljonov','email'=>'komiljonovdev@gmail.com']);
-
 
 // Get sql query
 echo User::getQuery();

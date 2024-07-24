@@ -1,7 +1,15 @@
 {
+  "name": "komiljonovdev/php-query-builder",
+  "description": "Database Query Builder for php",
   "autoload": {
     "psr-4": {
       "Core\\": "Core/"
     }
-  }
+  },
+  "authors": [
+    {
+      "name": "Komiljonovdev",
+      "email":"komiljonovdev@gmail.com"
+    }
+  ]
 }
