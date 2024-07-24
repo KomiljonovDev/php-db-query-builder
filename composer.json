@@ -11,5 +11,8 @@
       "name": "Komiljonovdev",
       "email":"komiljonovdev@gmail.com"
     }
-  ]
+  ],
+  "require": {
+    "php": ">=8.2"
+  }
 }
