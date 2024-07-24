@@ -1,20 +1,20 @@
 {
   "name": "komiljonovdev/php-query-builder",
-  "description": "Database Query Builder for php",
-  "autoload": {
-    "psr-4": {
-      "Core\\": "Core/"
-    }
-  },
+  "description": "A simple and flexible PHP query builder library",
+  "type": "library",
+  "license": "MIT",
   "authors": [
     {
-      "name": "komiljonovdev",
-      "email":"komiljonovdev@gmail.com"
+      "name": "Obidjon",
+      "email": "komiljonovdev@gmail.com"
     }
   ],
   "require": {
-    "php": ">=8.2"
+    "php": ">=8.0"
   },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+  "autoload": {
+    "psr-4": {
+      "Komiljonovdev\\PhpQueryBuilder\\": "Core"
+    }
+  }
 }
