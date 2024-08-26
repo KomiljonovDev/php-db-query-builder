@@ -1,2 +1,5 @@
 .env
 /vendor
+.idea
+.DS_Store
+Core/.DS_Store
