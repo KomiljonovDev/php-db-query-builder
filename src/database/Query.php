@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\database;
+namespace App\database;
 
 use http\Exception;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Models;
+namespace App\Models;
 
-use Core\database\Model;
+use App\database\Model;
 
 class User extends Model {
     protected static $table_name = 'users';

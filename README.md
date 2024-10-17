@@ -63,7 +63,7 @@ So'rovlarni amalga oshirish uchun 2 xil usul mavjud
     <?php
     require 'vendor/autoload.php';
     
-    use Core\Models\User;
+    use Model\Models\User;
   
     User::create(['name'=>'Obidjon', 'email'=>'komiljonovdev@gmail.com']);
   ```
