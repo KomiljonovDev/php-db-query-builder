@@ -36,7 +36,6 @@ So'rovlarni amalga oshirish uchun 2 xil usul mavjud
   - Biror methodni qo'llab ko'ramiz, masalan create, quyidagi kodlar orqali users table'ga yangi ma'lumot kiritamiz:
   ```php
   <?php
-  require 'vendor/autoload.php';
 
   use Core\database\Query;
 
@@ -61,7 +60,6 @@ So'rovlarni amalga oshirish uchun 2 xil usul mavjud
   - `index.php` faylida User modelni ishlatamiz, quyidagi kod users table'ga yangi ma'lumot kiritadi:
   ```php
     <?php
-    require 'vendor/autoload.php';
     
     use Model\Models\User;
   
